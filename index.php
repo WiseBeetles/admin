@@ -1,5 +1,13 @@
 <?php
-require_once "app/config/config.php";
+/**
+ * Require project config
+ */
+require_once "config/config.php";
+
+/**
+ * Require autoload
+ */
+require __DIR__ . '/vendor/autoload.php';
 
 $request = $_SERVER['REQUEST_URI'];
 $viewDir = VIEWS_PATH;
