@@ -7,22 +7,22 @@ require_once "config/config.php";
 /**
  * Require autoload
  */
-require __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
-$request = $_SERVER['REQUEST_URI'];
-$viewDir = VIEWS_PATH;
+/**
+ * Site routes
+ */
+$router = require_once __DIR__ . '/routes/web.php';
 
-switch ($request) {
-    case '':
-    case '/':
-        require_once __DIR__ . $viewDir . 'home.php';
-        break;
+/**
+ * Services container
+ */
+$container = require_once __DIR__ . '/config/services.php';
 
-    case '/admin':
-        require_once __DIR__ . $viewDir . 'admin.php';
-        break;
+$dispatcher = new Framework\Dispatcher($router, $container);
 
-    default:
-        http_response_code(404);
-        require_once __DIR__ . $viewDir . '404.php';
-}
+$request = Framework\Request::createFromGlobals();
+
+$response = $dispatcher->handle($request);
+
+//$response->send();
