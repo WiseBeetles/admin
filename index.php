@@ -25,10 +25,19 @@ $router = require_once __DIR__ . '/routes/web.php';
  */
 $container = require_once __DIR__ . '/config/services.php';
 
+/**
+ * Dispatcher
+ */
 $dispatcher = new Framework\Dispatcher($router, $container);
 
+/**
+ * Request
+ */
 $request = Framework\Request::createFromGlobals();
 
+/**
+ * Response
+ */
 $response = $dispatcher->handle($request);
 
 $response->send();
