@@ -9,6 +9,12 @@ require_once "config/config.php";
  */
 require_once __DIR__ . '/vendor/autoload.php';
 
+$dotenv = new Framework\Dotenv;
+$dotenv->load(__DIR__ . "/.env");
+
+set_error_handler("Framework\ErrorHandler::handleError");
+set_exception_handler("Framework\ErrorHandler::handleException");
+
 /**
  * Site routes
  */
