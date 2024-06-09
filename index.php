@@ -25,4 +25,4 @@ $request = Framework\Request::createFromGlobals();
 
 $response = $dispatcher->handle($request);
 
-//$response->send();
+$response->send();

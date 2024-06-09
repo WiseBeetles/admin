@@ -42,8 +42,6 @@ class Dispatcher
         $middleware_handler = new MiddlewareRequestHandler($middleware,
             $controller_handler);
 
-        echo 'test2';
-
         return $middleware_handler->handle($request);
     }
 

@@ -27,8 +27,6 @@ abstract class Controller
     {
         $this->response->setBody($this->viewer->render($template, $data));
 
-        printVariable($this->viewer->render($template, $data));
-
         return $this->response;
     }
 
